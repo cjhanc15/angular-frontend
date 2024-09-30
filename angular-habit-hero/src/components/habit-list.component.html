@@ -1,0 +1,36 @@
+<div class="container">
+  <h2 class="mt-4">Habit List</h2>
+
+  <table class="table table-striped mt-4">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Start Date</th>
+        <th>Frequency</th>
+        <th>Goal</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let habit of habits">
+        <td>{{ habit.name }}</td>
+        <td>{{ habit.category }}</td>
+        <td>{{ habit.startDate }}</td>
+        <td>{{ habit.frequency }}</td>
+        <td>{{ habit.goal }}</td>
+        <td>
+          <!-- Debug: Output the habit.id -->
+          <span *ngIf="!habit.habitID">ID is missing for this habit</span>
+          <span *ngIf="habit.habitID">ID: {{ habit.habitID }}</span>
+
+          <!-- Edit Button: Ensure the correct id is passed -->
+          <a class="btn btn-primary btn-sm" [routerLink]="['/habits/edit', habit.habitID]">Edit</a>
+          <button class="btn btn-danger btn-sm ml-2" (click)="deleteHabit(habit.habitID!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a class="btn btn-success mt-3" routerLink="/habits/new">Add New Habit</a>
+</div>

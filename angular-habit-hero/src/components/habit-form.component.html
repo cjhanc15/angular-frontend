@@ -1,0 +1,79 @@
+<div class="container">
+  <h2 class="mt-4">{{ isEdit ? 'Edit Habit' : 'Create New Habit' }}</h2>
+
+  <!-- Form Submission: Triggers saveHabit() method -->
+  <form (ngSubmit)="saveHabit()">
+    <!-- Name Field -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="habit.name"
+        name="name"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <!-- Category Field -->
+    <div class="form-group">
+      <label for="category">Category</label>
+      <input
+        type="text"
+        id="category"
+        [(ngModel)]="habit.category"
+        name="category"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <!-- Start Date Field (with optional date formatting) -->
+    <div class="form-group">
+      <label for="startDate">Start Date</label>
+      <input
+        type="date"
+        id="startDate"
+        [(ngModel)]="habit.startDate"
+        name="startDate"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <!-- Frequency Field -->
+    <div class="form-group">
+      <label for="frequency">Frequency</label>
+      <input
+        type="text"
+        id="frequency"
+        [(ngModel)]="habit.frequency"
+        name="frequency"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <!-- Goal Field -->
+    <div class="form-group">
+      <label for="goal">Goal</label>
+      <input
+        type="text"
+        id="goal"
+        [(ngModel)]="habit.goal"
+        name="goal"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <!-- Submit Button (Updates or Creates based on isEdit flag) -->
+    <button type="submit" class="btn btn-success mt-3">
+      {{ isEdit ? 'Update Habit' : 'Create Habit' }}
+    </button>
+
+    <!-- Cancel Button (Redirects to the list of habits) -->
+    <a class="btn btn-secondary mt-3 ml-2" routerLink="/habits">Cancel</a>
+  </form>
+</div>
